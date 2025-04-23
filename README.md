@@ -13,4 +13,11 @@ git remote add origin git@github.com:Ashimbekov/git-practice.git
 6. Отправляет ветку main на GitHub 
 git push -u origin main
 
--u устанавливает связь между локальной веткой и удаленной
+-u устанавливает связь между локальной веткой и 
+
+
+branch todo
+echo "- [ ] Сделать практику по Git" > todo.txt
+git add todo.txt
+git commit -m "Добавлен новый задач todo.txt"
+
