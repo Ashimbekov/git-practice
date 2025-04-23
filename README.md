@@ -14,3 +14,9 @@ git remote add origin git@github.com:Ashimbekov/git-practice.git
 git push -u origin main
 
 -u устанавливает связь между локальной веткой и удаленной
+
+Создание новой ветки
+git checkout -b feature/info
+echo "Author: Nurdaulet" > info.txt
+git add info.txt
+git commit -m "Добавлен новый файл info.txt с информацией об авторе"
