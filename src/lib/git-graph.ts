@@ -37,7 +37,14 @@ export function applyStep(state: GitGraphState, step: GitVisualizerStep): GitGra
   }
 
   if (step.addBranches) {
-    branches = [...branches, ...step.addBranches];
+    for (const newBranch of step.addBranches) {
+      const existingIndex = branches.findIndex((b) => b.name === newBranch.name);
+      if (existingIndex >= 0) {
+        branches = branches.map((b, i) => (i === existingIndex ? newBranch : b));
+      } else {
+        branches = [...branches, newBranch];
+      }
+    }
   }
 
   if (step.removeBranches) {
