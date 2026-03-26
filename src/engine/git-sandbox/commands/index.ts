@@ -3,6 +3,7 @@ import { execInit, execAdd, execCommit, execStatus, execLog, execDiff } from "./
 import { execEcho, execCat, execLs, execRm } from "./filesystem";
 import { execBranch, execSwitch, execCheckout, execMerge } from "./branch";
 import { execReset, execRevert, execStash, execReflog, execCherryPick, execRebase } from "./advanced";
+import { execRemote, execPush, execFetch, execPull } from "./remote";
 
 type CommandHandler = (state: EngineState, cmd: ParsedCommand) => CommandOutput;
 
@@ -23,6 +24,10 @@ const gitCommands: Record<string, CommandHandler> = {
   reflog: execReflog,
   "cherry-pick": execCherryPick,
   rebase: execRebase,
+  remote: execRemote,
+  push: execPush,
+  fetch: execFetch,
+  pull: execPull,
 };
 
 const shellCommands: Record<string, CommandHandler> = {
