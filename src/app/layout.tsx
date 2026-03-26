@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/ui/Navbar";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${inter.className} bg-gray-950 text-white antialiased`}>
+        <Navbar />
         {children}
       </body>
     </html>
