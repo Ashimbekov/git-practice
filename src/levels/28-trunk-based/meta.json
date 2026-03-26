@@ -1,0 +1,11 @@
+{
+  "id": "28-trunk-based",
+  "title": "Trunk-Based Development",
+  "description": "Узнай про разработку на основе trunk: короткие ветки, feature flags и CI/CD",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "teamwork",
+  "tags": ["trunk-based", "ci-cd", "feature-flags", "workflow", "teamwork"],
+  "prerequisites": ["27-git-flow"],
+  "estimatedMinutes": 15
+}

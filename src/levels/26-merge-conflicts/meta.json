@@ -1,0 +1,11 @@
+{
+  "id": "26-merge-conflicts",
+  "title": "Конфликты слияния",
+  "description": "Пойми почему возникают конфликты, научись читать маркеры и разрешать их вручную",
+  "difficulty": 4,
+  "xp": 250,
+  "section": "teamwork",
+  "tags": ["merge", "conflicts", "teamwork", "resolve"],
+  "prerequisites": ["09-merge"],
+  "estimatedMinutes": 20
+}

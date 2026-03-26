@@ -1,0 +1,11 @@
+{
+  "id": "29-collaboration",
+  "title": "Командная работа",
+  "description": "Практические паттерны командной работы: конвенции коммитов, именование веток, .gitignore",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "teamwork",
+  "tags": ["collaboration", "commit-conventions", "gitignore", "teamwork"],
+  "prerequisites": ["26-merge-conflicts"],
+  "estimatedMinutes": 15
+}

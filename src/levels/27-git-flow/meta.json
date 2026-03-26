@@ -1,0 +1,11 @@
+{
+  "id": "27-git-flow",
+  "title": "Git Flow",
+  "description": "Изучи популярную модель ветвления Git Flow: main, develop, feature, release и hotfix",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "teamwork",
+  "tags": ["git-flow", "branching", "workflow", "teamwork"],
+  "prerequisites": ["09-merge"],
+  "estimatedMinutes": 15
+}
