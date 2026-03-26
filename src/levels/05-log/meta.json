@@ -1,0 +1,11 @@
+{
+  "id": "05-log",
+  "title": "История коммитов (git log)",
+  "description": "Изучи git log, git log --oneline и git log --graph для просмотра истории",
+  "difficulty": 2,
+  "xp": 150,
+  "section": "basics",
+  "tags": ["log", "history", "oneline", "graph"],
+  "prerequisites": ["04-status"],
+  "estimatedMinutes": 10
+}

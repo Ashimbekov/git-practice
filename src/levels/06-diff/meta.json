@@ -1,0 +1,11 @@
+{
+  "id": "06-diff",
+  "title": "Просмотр изменений (git diff)",
+  "description": "Освой git diff и git diff --staged для чтения изменений в коде",
+  "difficulty": 2,
+  "xp": 150,
+  "section": "basics",
+  "tags": ["diff", "staged", "changes"],
+  "prerequisites": ["05-log"],
+  "estimatedMinutes": 10
+}

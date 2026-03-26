@@ -1,0 +1,11 @@
+{
+  "id": "04-status",
+  "title": "Статус репозитория",
+  "description": "Научись читать вывод git status и понимать состояния файлов",
+  "difficulty": 1,
+  "xp": 100,
+  "section": "basics",
+  "tags": ["status", "diff", "untracked", "modified"],
+  "prerequisites": ["03-staging"],
+  "estimatedMinutes": 7
+}

@@ -1,0 +1,11 @@
+{
+  "id": "03-staging",
+  "title": "Зона подготовки (Staging Area)",
+  "description": "Узнай как работает staging area: частичное добавление, git add . и git add -p",
+  "difficulty": 1,
+  "xp": 120,
+  "section": "basics",
+  "tags": ["add", "staging", "index"],
+  "prerequisites": ["02-first-commit"],
+  "estimatedMinutes": 8
+}
