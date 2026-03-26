@@ -1,58 +1,99 @@
 "use client";
 
-import { memo } from "react";
-import { Handle, Position, type NodeProps } from "@xyflow/react";
 import { motion } from "framer-motion";
+import { GraphNode } from "./useGitGraph";
 
-interface CommitNodeData {
-  label: string;
-  message: string;
-  branchColor: string;
-  isHead: boolean;
-  isHighlighted: boolean;
+const RADIUS = 20;
+
+interface CommitNodeProps {
+  node: GraphNode;
+  index: number;
 }
 
-function CommitNodeComponent({ data }: NodeProps) {
-  const { label, message, branchColor, isHead, isHighlighted } = data as unknown as CommitNodeData;
-
+export function CommitNode({ node, index }: CommitNodeProps) {
   return (
-    <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="relative"
+    <motion.g
+      initial={{ opacity: 0, scale: 0.3 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: index * 0.08, type: "spring", stiffness: 400, damping: 25 }}
     >
-      <Handle type="target" position={Position.Top} className="!bg-transparent !border-0" />
-
-      <div
-        className={`w-14 h-14 rounded-full flex items-center justify-center text-xs font-mono border-[3px] transition-all ${
-          isHighlighted ? "ring-4 ring-offset-2 ring-offset-gray-950" : ""
-        }`}
-        style={{
-          borderColor: branchColor,
-          backgroundColor: "#1a1a2e",
-        }}
-      >
-        {label}
-      </div>
-
-      {isHead && (
-        <motion.div
-          initial={{ opacity: 0, y: -5 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute -right-16 top-1/2 -translate-y-1/2 bg-rose-600/30 text-rose-400 text-[10px] font-bold px-2 py-0.5 rounded-full"
-        >
-          HEAD
-        </motion.div>
+      {/* Glow effect for HEAD */}
+      {node.isHead && (
+        <motion.circle
+          cx={node.x}
+          cy={node.y}
+          r={RADIUS + 8}
+          fill="none"
+          stroke={node.branchColor}
+          strokeWidth={2}
+          strokeDasharray="4 3"
+          opacity={0.4}
+          animate={{ r: [RADIUS + 6, RADIUS + 10, RADIUS + 6] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
       )}
 
-      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 whitespace-nowrap">
-        {message}
-      </div>
+      {/* Node circle */}
+      <circle
+        cx={node.x}
+        cy={node.y}
+        r={RADIUS}
+        fill="#0f172a"
+        stroke={node.branchColor}
+        strokeWidth={3}
+      />
 
-      <Handle type="source" position={Position.Bottom} className="!bg-transparent !border-0" />
-    </motion.div>
+      {/* Hash label inside */}
+      <text
+        x={node.x}
+        y={node.y + 1}
+        textAnchor="middle"
+        dominantBaseline="central"
+        fill="white"
+        fontSize={9}
+        fontFamily="monospace"
+        fontWeight={600}
+      >
+        {node.label}
+      </text>
+
+      {/* Commit message to the right */}
+      <text
+        x={node.x + RADIUS + 10}
+        y={node.y + 1}
+        dominantBaseline="central"
+        fill="#94a3b8"
+        fontSize={11}
+      >
+        {node.message}
+      </text>
+
+      {/* HEAD badge */}
+      {node.isHead && (
+        <g>
+          <rect
+            x={node.x - RADIUS - 42}
+            y={node.y - 10}
+            width={36}
+            height={20}
+            rx={10}
+            fill="#e11d4820"
+            stroke="#e11d4850"
+            strokeWidth={1}
+          />
+          <text
+            x={node.x - RADIUS - 24}
+            y={node.y + 1}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fill="#fb7185"
+            fontSize={9}
+            fontWeight={700}
+          >
+            HEAD
+          </text>
+        </g>
+      )}
+    </motion.g>
   );
 }
-
-export const CommitNodeType = memo(CommitNodeComponent);
