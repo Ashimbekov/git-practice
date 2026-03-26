@@ -30,6 +30,9 @@ import meta26 from "./26-merge-conflicts/meta.json";
 import meta27 from "./27-git-flow/meta.json";
 import meta28 from "./28-trunk-based/meta.json";
 import meta29 from "./29-collaboration/meta.json";
+import meta30 from "./30-objects/meta.json";
+import meta31 from "./31-blobs-trees/meta.json";
+import meta32 from "./32-refs-head/meta.json";
 
 interface LevelEntry {
   meta: LevelMeta;
@@ -66,6 +69,9 @@ export const LEVELS: LevelEntry[] = [
   { meta: meta27 as LevelMeta, load: () => import("./27-git-flow/Level") },
   { meta: meta28 as LevelMeta, load: () => import("./28-trunk-based/Level") },
   { meta: meta29 as LevelMeta, load: () => import("./29-collaboration/Level") },
+  { meta: meta30 as LevelMeta, load: () => import("./30-objects/Level") },
+  { meta: meta31 as LevelMeta, load: () => import("./31-blobs-trees/Level") },
+  { meta: meta32 as LevelMeta, load: () => import("./32-refs-head/Level") },
 ];
 
 export function getLevelById(id: string): LevelEntry | undefined {

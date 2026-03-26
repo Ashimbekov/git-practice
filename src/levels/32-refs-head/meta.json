@@ -1,0 +1,11 @@
+{
+  "id": "32-refs-head",
+  "title": "Refs и HEAD: указатели Git",
+  "description": "Как работают ссылки на ветки (.git/refs/heads/), файл HEAD и symbolic refs",
+  "difficulty": 5,
+  "xp": 300,
+  "section": "internals",
+  "tags": ["internals", "refs", "HEAD", "symbolic-ref", "packed-refs"],
+  "prerequisites": ["30-objects"],
+  "estimatedMinutes": 15
+}

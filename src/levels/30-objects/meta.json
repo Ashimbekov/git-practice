@@ -1,0 +1,11 @@
+{
+  "id": "30-objects",
+  "title": "Объекты Git: заглядываем под капот",
+  "description": "Узнай про 4 типа объектов Git: blob, tree, commit, tag — и как работает content-addressable storage",
+  "difficulty": 4,
+  "xp": 250,
+  "section": "internals",
+  "tags": ["internals", "objects", "blob", "tree", "commit", "sha1"],
+  "prerequisites": ["05-log"],
+  "estimatedMinutes": 15
+}

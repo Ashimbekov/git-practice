@@ -1,0 +1,11 @@
+{
+  "id": "31-blobs-trees",
+  "title": "Blobs и Trees: хранение файлов",
+  "description": "Как Git хранит файлы как blobs, директории как trees, и почему дедупликация экономит место",
+  "difficulty": 5,
+  "xp": 300,
+  "section": "internals",
+  "tags": ["internals", "blob", "tree", "deduplication", "hash-object", "ls-tree"],
+  "prerequisites": ["30-objects"],
+  "estimatedMinutes": 15
+}

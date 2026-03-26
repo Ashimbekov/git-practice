@@ -14,7 +14,7 @@ export const BADGES: Badge[] = [
     description: "Пройти все уровни по веткам",
     icon: "🌿",
     condition: (p) =>
-      ["04-branch", "05-switch", "06-merge", "07-rebase", "08-head"].every((id) =>
+      ["07-branch", "08-switch", "09-merge", "10-rebase", "11-head"].every((id) =>
         p.completedLevels.includes(id)
       ),
   },
@@ -23,7 +23,7 @@ export const BADGES: Badge[] = [
     name: "Конфликт решён",
     description: "Пройти уровень по merge conflicts",
     icon: "⚔️",
-    condition: (p) => p.completedLevels.includes("22-merge-conflicts"),
+    condition: (p) => p.completedLevels.includes("26-merge-conflicts"),
   },
   {
     id: "git-archaeologist",
@@ -31,7 +31,7 @@ export const BADGES: Badge[] = [
     description: "Пройти все уровни Git internals",
     icon: "🏛️",
     condition: (p) =>
-      ["28-objects", "29-blobs-trees", "30-refs-head"].every((id) =>
+      ["30-objects", "31-blobs-trees", "32-refs-head"].every((id) =>
         p.completedLevels.includes(id)
       ),
   },
