@@ -46,7 +46,7 @@ function CommitNodeComponent({ data }: NodeProps) {
         </motion.div>
       )}
 
-      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 whitespace-nowrap max-w-[100px] truncate">
+      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 whitespace-nowrap">
         {message}
       </div>
 
