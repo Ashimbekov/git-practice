@@ -58,7 +58,7 @@ export function GitVisualizer({ initial, steps, currentStep }: GitVisualizerProp
         ))}
       </div>
 
-      <div className="flex-1 min-h-[300px] rounded-lg overflow-hidden bg-black/20 relative z-0">
+      <div className="flex-1 min-h-0 rounded-lg overflow-hidden bg-black/20 relative z-0">
         <ReactFlow
           nodes={nodes}
           edges={edges}

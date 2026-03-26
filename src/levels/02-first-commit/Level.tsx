@@ -198,7 +198,7 @@ export default function Level({ onComplete }: LevelProps) {
 
             <TerminalSim lines={terminalLines} />
 
-            <div className="h-[350px]">
+            <div className="h-[420px]">
               <GitVisualizer
                 initial={initialCommits}
                 steps={visualizerSteps}
