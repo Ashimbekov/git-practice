@@ -1,0 +1,11 @@
+{
+  "id": "14-push",
+  "title": "Отправляем коммиты на сервер",
+  "description": "Научись отправлять свои изменения в удалённый репозиторий командой git push",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "remote",
+  "tags": ["push", "remote", "origin"],
+  "prerequisites": ["13-remote"],
+  "estimatedMinutes": 8
+}

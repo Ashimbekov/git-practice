@@ -1,0 +1,11 @@
+{
+  "id": "16-fetch",
+  "title": "Проверяем изменения без слияния",
+  "description": "Научись использовать git fetch для получения изменений без автоматического слияния",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "remote",
+  "tags": ["fetch", "origin", "tracking"],
+  "prerequisites": ["15-pull"],
+  "estimatedMinutes": 8
+}

@@ -1,0 +1,11 @@
+{
+  "id": "13-remote",
+  "title": "Управляем удалёнными репозиториями",
+  "description": "Разберись что такое remote, как просматривать и добавлять удалённые репозитории",
+  "difficulty": 2,
+  "xp": 150,
+  "section": "remote",
+  "tags": ["remote", "origin", "github"],
+  "prerequisites": ["12-clone"],
+  "estimatedMinutes": 7
+}

@@ -1,0 +1,11 @@
+{
+  "id": "15-pull",
+  "title": "Получаем изменения от команды",
+  "description": "Узнай как получать изменения из удалённого репозитория командой git pull",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "remote",
+  "tags": ["pull", "fetch", "merge", "remote"],
+  "prerequisites": ["14-push"],
+  "estimatedMinutes": 8
+}

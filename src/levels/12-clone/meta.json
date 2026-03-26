@@ -1,0 +1,11 @@
+{
+  "id": "12-clone",
+  "title": "Клонируем проект",
+  "description": "Узнай как скачать репозиторий с GitHub командой git clone",
+  "difficulty": 2,
+  "xp": 150,
+  "section": "remote",
+  "tags": ["clone", "remote", "github"],
+  "prerequisites": ["06-diff"],
+  "estimatedMinutes": 7
+}
