@@ -1,0 +1,1 @@
+export { GitVisualizer } from "./GitVisualizer";
