@@ -1,0 +1,11 @@
+{
+  "id": "02-first-commit",
+  "title": "Первый коммит",
+  "description": "Научись отслеживать файлы и делать коммиты",
+  "difficulty": 1,
+  "xp": 150,
+  "section": "basics",
+  "tags": ["add", "commit", "staging"],
+  "prerequisites": ["01-init"],
+  "estimatedMinutes": 7
+}

@@ -1,0 +1,11 @@
+{
+  "id": "01-init",
+  "title": "Создаём первый репозиторий",
+  "description": "Узнай что такое git init и зачем он нужен",
+  "difficulty": 1,
+  "xp": 100,
+  "section": "basics",
+  "tags": ["init", "repository"],
+  "prerequisites": [],
+  "estimatedMinutes": 5
+}
