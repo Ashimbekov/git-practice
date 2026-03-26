@@ -1,0 +1,11 @@
+{
+  "id": "22-cherry-pick",
+  "title": "Выбираем коммиты (git cherry-pick)",
+  "description": "Научись копировать отдельные коммиты из одной ветки в другую, не сливая всю ветку",
+  "difficulty": 4,
+  "xp": 250,
+  "section": "advanced",
+  "tags": ["cherry-pick", "commits", "branching", "advanced"],
+  "prerequisites": ["09-merge"],
+  "estimatedMinutes": 12
+}

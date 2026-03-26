@@ -1,0 +1,11 @@
+{
+  "id": "23-reset",
+  "title": "Откат изменений (git reset)",
+  "description": "Разберись в трёх режимах git reset: soft, mixed и hard — и когда каждый из них применять",
+  "difficulty": 4,
+  "xp": 250,
+  "section": "advanced",
+  "tags": ["reset", "history", "advanced", "danger"],
+  "prerequisites": ["05-log"],
+  "estimatedMinutes": 15
+}

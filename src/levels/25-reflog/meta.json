@@ -1,0 +1,11 @@
+{
+  "id": "25-reflog",
+  "title": "Журнал ссылок (git reflog)",
+  "description": "Открой секретный инструмент Git: reflog поможет восстановить «потерянные» коммиты после сброса или ошибки",
+  "difficulty": 5,
+  "xp": 300,
+  "section": "advanced",
+  "tags": ["reflog", "recovery", "advanced", "safety"],
+  "prerequisites": ["23-reset"],
+  "estimatedMinutes": 15
+}

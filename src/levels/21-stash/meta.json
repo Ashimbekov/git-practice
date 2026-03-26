@@ -1,0 +1,11 @@
+{
+  "id": "21-stash",
+  "title": "Прячем изменения (git stash)",
+  "description": "Научись временно откладывать незафиксированные изменения и возвращать их когда нужно",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "advanced",
+  "tags": ["stash", "workflow", "advanced"],
+  "prerequisites": ["09-merge"],
+  "estimatedMinutes": 10
+}

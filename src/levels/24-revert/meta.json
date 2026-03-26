@@ -1,0 +1,11 @@
+{
+  "id": "24-revert",
+  "title": "Безопасная отмена (git revert)",
+  "description": "Узнай как безопасно отменить коммит, добавив новый — без переписывания истории",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "advanced",
+  "tags": ["revert", "undo", "history", "advanced"],
+  "prerequisites": ["05-log"],
+  "estimatedMinutes": 10
+}

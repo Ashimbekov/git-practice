@@ -21,6 +21,11 @@ import meta17 from "./17-pr/meta.json";
 import meta18 from "./18-issues/meta.json";
 import meta19 from "./19-fork/meta.json";
 import meta20 from "./20-code-review/meta.json";
+import meta21 from "./21-stash/meta.json";
+import meta22 from "./22-cherry-pick/meta.json";
+import meta23 from "./23-reset/meta.json";
+import meta24 from "./24-revert/meta.json";
+import meta25 from "./25-reflog/meta.json";
 
 interface LevelEntry {
   meta: LevelMeta;
@@ -48,6 +53,11 @@ export const LEVELS: LevelEntry[] = [
   { meta: meta18 as LevelMeta, load: () => import("./18-issues/Level") },
   { meta: meta19 as LevelMeta, load: () => import("./19-fork/Level") },
   { meta: meta20 as LevelMeta, load: () => import("./20-code-review/Level") },
+  { meta: meta21 as LevelMeta, load: () => import("./21-stash/Level") },
+  { meta: meta22 as LevelMeta, load: () => import("./22-cherry-pick/Level") },
+  { meta: meta23 as LevelMeta, load: () => import("./23-reset/Level") },
+  { meta: meta24 as LevelMeta, load: () => import("./24-revert/Level") },
+  { meta: meta25 as LevelMeta, load: () => import("./25-reflog/Level") },
 ];
 
 export function getLevelById(id: string): LevelEntry | undefined {
