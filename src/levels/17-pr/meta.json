@@ -1,0 +1,11 @@
+{
+  "id": "17-pr",
+  "title": "Первый Pull Request",
+  "description": "Узнай что такое Pull Request, как его создать и зачем он нужен в командной работе",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "github",
+  "tags": ["pull-request", "pr", "review", "merge", "github"],
+  "prerequisites": ["14-push"],
+  "estimatedMinutes": 10
+}

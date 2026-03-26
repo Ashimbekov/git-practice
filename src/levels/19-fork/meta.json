@@ -1,0 +1,11 @@
+{
+  "id": "19-fork",
+  "title": "Fork: вклад в открытый код",
+  "description": "Научись форкать репозитории и вносить вклад в open source проекты через Pull Request",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "github",
+  "tags": ["fork", "upstream", "open-source", "contribute", "github"],
+  "prerequisites": ["17-pr"],
+  "estimatedMinutes": 10
+}

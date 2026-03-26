@@ -1,0 +1,11 @@
+{
+  "id": "18-issues",
+  "title": "GitHub Issues: задачи и баги",
+  "description": "Научись работать с Issues — создавать задачи, ставить метки и связывать их с коммитами",
+  "difficulty": 2,
+  "xp": 150,
+  "section": "github",
+  "tags": ["issues", "labels", "assignees", "github", "workflow"],
+  "prerequisites": ["17-pr"],
+  "estimatedMinutes": 8
+}

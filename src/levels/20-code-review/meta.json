@@ -1,0 +1,11 @@
+{
+  "id": "20-code-review",
+  "title": "Code Review: искусство обратной связи",
+  "description": "Узнай как правильно проводить code review — оставлять комментарии, запрашивать изменения и одобрять PR",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "github",
+  "tags": ["code-review", "pull-request", "comments", "approve", "github"],
+  "prerequisites": ["17-pr"],
+  "estimatedMinutes": 10
+}
