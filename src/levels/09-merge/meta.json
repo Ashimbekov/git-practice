@@ -1,0 +1,11 @@
+{
+  "id": "09-merge",
+  "title": "Слияние веток (git merge)",
+  "description": "Научись объединять ветки: fast-forward, 3-way merge и merge commit",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "branching",
+  "tags": ["merge", "fast-forward", "merge-commit", "branching"],
+  "prerequisites": ["08-switch"],
+  "estimatedMinutes": 15
+}

@@ -1,0 +1,11 @@
+{
+  "id": "11-head",
+  "title": "Указатель HEAD",
+  "description": "Разберись что такое HEAD, detached HEAD state и как HEAD движется по графу",
+  "difficulty": 3,
+  "xp": 200,
+  "section": "branching",
+  "tags": ["HEAD", "detached", "checkout", "branching"],
+  "prerequisites": ["08-switch"],
+  "estimatedMinutes": 12
+}

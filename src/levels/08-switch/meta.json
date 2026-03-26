@@ -1,0 +1,11 @@
+{
+  "id": "08-switch",
+  "title": "Переключение веток (git switch)",
+  "description": "Освой git switch и git checkout для навигации между ветками",
+  "difficulty": 2,
+  "xp": 150,
+  "section": "branching",
+  "tags": ["switch", "checkout", "HEAD", "branching"],
+  "prerequisites": ["07-branch"],
+  "estimatedMinutes": 10
+}

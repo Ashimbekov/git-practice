@@ -1,0 +1,11 @@
+{
+  "id": "10-rebase",
+  "title": "Перебазирование (git rebase)",
+  "description": "Пойми концепцию rebase: как «переиграть» коммиты на новой базе и когда это опасно",
+  "difficulty": 4,
+  "xp": 250,
+  "section": "branching",
+  "tags": ["rebase", "history", "branching", "advanced"],
+  "prerequisites": ["09-merge"],
+  "estimatedMinutes": 15
+}

@@ -1,0 +1,11 @@
+{
+  "id": "07-branch",
+  "title": "Ветки (git branch)",
+  "description": "Научись создавать, просматривать и удалять ветки — основу параллельной разработки",
+  "difficulty": 2,
+  "xp": 150,
+  "section": "branching",
+  "tags": ["branch", "branching", "parallel"],
+  "prerequisites": ["06-diff"],
+  "estimatedMinutes": 10
+}
