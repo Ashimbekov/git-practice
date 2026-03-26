@@ -1,0 +1,11 @@
+{
+  "id": "33-commit-messages",
+  "title": "Искусство коммит-сообщений",
+  "description": "Научись писать понятные и полезные сообщения коммитов",
+  "difficulty": 2,
+  "xp": 200,
+  "section": "teamwork",
+  "tags": ["commit", "messages", "conventional-commits", "best-practices"],
+  "prerequisites": ["02-first-commit"],
+  "estimatedMinutes": 10
+}

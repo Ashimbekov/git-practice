@@ -33,6 +33,7 @@ import meta29 from "./29-collaboration/meta.json";
 import meta30 from "./30-objects/meta.json";
 import meta31 from "./31-blobs-trees/meta.json";
 import meta32 from "./32-refs-head/meta.json";
+import meta33 from "./33-commit-messages/meta.json";
 
 interface LevelEntry {
   meta: LevelMeta;
@@ -72,6 +73,7 @@ export const LEVELS: LevelEntry[] = [
   { meta: meta30 as LevelMeta, load: () => import("./30-objects/Level") },
   { meta: meta31 as LevelMeta, load: () => import("./31-blobs-trees/Level") },
   { meta: meta32 as LevelMeta, load: () => import("./32-refs-head/Level") },
+  { meta: meta33 as LevelMeta, load: () => import("./33-commit-messages/Level") },
 ];
 
 export function getLevelById(id: string): LevelEntry | undefined {
