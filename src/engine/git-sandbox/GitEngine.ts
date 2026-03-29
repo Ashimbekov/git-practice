@@ -1,4 +1,4 @@
-import { EngineState, CommandOutput } from "./types";
+import { EngineState, CommandOutput, CommitObject, RemoteState, StashedState } from "./types";
 import { parseCommand } from "./parser";
 import { executeCommand } from "./commands";
 
@@ -116,6 +116,21 @@ export class GitEngine {
     this.state = createEmptyState();
     this.history = [];
   }
+
+  serialize(): string {
+    return JSON.stringify({
+      state: serializeState(this.state),
+      history: this.history,
+    });
+  }
+
+  static deserialize(json: string): GitEngine {
+    const data = JSON.parse(json);
+    const engine = new GitEngine();
+    engine.state = deserializeState(data.state);
+    engine.history = data.history;
+    return engine;
+  }
 }
 
 function createEmptyState(): EngineState {
@@ -133,5 +148,81 @@ function createEmptyState(): EngineState {
     conflictFiles: new Map(),
     tags: new Map(),
     bisect: null,
+  };
+}
+
+function serializeCommit(commit: CommitObject) {
+  return {
+    ...commit,
+    snapshot: [...commit.snapshot.entries()],
+  };
+}
+
+function deserializeCommit(raw: ReturnType<typeof serializeCommit>): CommitObject {
+  return {
+    ...raw,
+    snapshot: new Map(raw.snapshot),
+  };
+}
+
+function serializeRemoteState(remote: RemoteState) {
+  return {
+    branches: [...remote.branches.entries()],
+    commits: remote.commits.map(serializeCommit),
+  };
+}
+
+function deserializeRemoteState(raw: ReturnType<typeof serializeRemoteState>): RemoteState {
+  return {
+    branches: new Map(raw.branches),
+    commits: raw.commits.map(deserializeCommit),
+  };
+}
+
+function serializeStash(stash: StashedState) {
+  return {
+    message: stash.message,
+    workingDir: [...stash.workingDir.entries()],
+    stagingArea: [...stash.stagingArea.entries()],
+  };
+}
+
+function deserializeStash(raw: ReturnType<typeof serializeStash>): StashedState {
+  return {
+    message: raw.message,
+    workingDir: new Map(raw.workingDir),
+    stagingArea: new Map(raw.stagingArea),
+  };
+}
+
+function serializeState(state: EngineState) {
+  return {
+    ...state,
+    workingDir: [...state.workingDir.entries()],
+    stagingArea: [...state.stagingArea.entries()],
+    commits: state.commits.map(serializeCommit),
+    branches: [...state.branches.entries()],
+    remotes: [...state.remotes.entries()].map(([name, remote]) => [name, serializeRemoteState(remote)]),
+    stash: state.stash.map(serializeStash),
+    conflictFiles: [...state.conflictFiles.entries()],
+    tags: [...state.tags.entries()],
+  };
+}
+
+function deserializeState(raw: ReturnType<typeof serializeState>): EngineState {
+  return {
+    ...raw,
+    workingDir: new Map(raw.workingDir),
+    stagingArea: new Map(raw.stagingArea),
+    commits: raw.commits.map(deserializeCommit),
+    branches: new Map(raw.branches),
+    remotes: new Map(
+      (raw.remotes as Array<[string, ReturnType<typeof serializeRemoteState>]>).map(
+        ([name, remote]) => [name, deserializeRemoteState(remote)]
+      )
+    ),
+    stash: raw.stash.map(deserializeStash),
+    conflictFiles: new Map(raw.conflictFiles as Array<[string, { ours: string; theirs: string }]>),
+    tags: new Map(raw.tags),
   };
 }
