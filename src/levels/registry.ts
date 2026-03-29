@@ -1,5 +1,7 @@
 import { LevelMeta } from "@/types";
 import { ComponentType } from "react";
+import { EngineState } from "@/engine/git-sandbox/types";
+import { ValidationResult } from "@/components/sandbox/SandboxChallenge";
 
 import meta01 from "./01-init/meta.json";
 import meta02 from "./02-first-commit/meta.json";
@@ -38,6 +40,8 @@ import meta33 from "./33-commit-messages/meta.json";
 interface LevelEntry {
   meta: LevelMeta;
   load: () => Promise<{ default: ComponentType<{ onComplete: (correct: number, total: number) => void }> }>;
+  loadPreset?: () => Promise<{ createPreset: () => EngineState }>;
+  loadValidator?: () => Promise<{ validate: (state: EngineState) => ValidationResult }>;
 }
 
 export const LEVELS: LevelEntry[] = [
