@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { GitEngine } from "@/engine/git-sandbox/GitEngine";
 import { OutputLine } from "@/engine/git-sandbox/types";
 import { SandboxTerminal } from "./SandboxTerminal";
@@ -11,10 +11,64 @@ import { GitCommitNode } from "@/types";
 
 type TabId = "terminal" | "graph" | "files";
 
-export function SandboxLayout() {
-  const engineRef = useRef(new GitEngine());
+interface SandboxLayoutProps {
+  levelId?: string;
+}
 
-  const [outputLines, setOutputLines] = useState<OutputLine[]>([]);
+const SANDBOX_KEY = "gitquest-sandbox";
+
+function getSandboxKey(levelId?: string): string {
+  return levelId ? `gitquest-sandbox-level-${levelId}` : SANDBOX_KEY;
+}
+
+interface SandboxSave {
+  engineState: string;
+  outputLines: OutputLine[];
+  savedAt: number;
+}
+
+function saveSandbox(key: string, engine: GitEngine, outputLines: OutputLine[]) {
+  try {
+    const data: SandboxSave = {
+      engineState: engine.serialize(),
+      outputLines,
+      savedAt: Date.now(),
+    };
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch {
+    // localStorage full or unavailable — silently ignore
+  }
+}
+
+function loadSandbox(key: string): SandboxSave | null {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    return JSON.parse(raw) as SandboxSave;
+  } catch {
+    return null;
+  }
+}
+
+export function SandboxLayout({ levelId }: SandboxLayoutProps) {
+  const [engine] = useState(() => {
+    const key = getSandboxKey(levelId);
+    const saved = loadSandbox(key);
+    if (saved) {
+      try {
+        return GitEngine.deserialize(saved.engineState);
+      } catch {
+        return new GitEngine();
+      }
+    }
+    return new GitEngine();
+  });
+
+  const [outputLines, setOutputLines] = useState<OutputLine[]>(() => {
+    const key = getSandboxKey(levelId);
+    const saved = loadSandbox(key);
+    return saved?.outputLines ?? [];
+  });
   const [files, setFiles] = useState<{
     working: Array<{ path: string; content: string }>;
     staging: Array<{ path: string; content: string }>;
@@ -24,35 +78,37 @@ export function SandboxLayout() {
   const [activeTab, setActiveTab] = useState<TabId>("terminal");
 
   const refreshState = useCallback(() => {
-    const engine = engineRef.current;
     setFiles(engine.getFiles());
     const graphData = engine.getGraphData();
     setGraphCommits(graphData.commits);
-  }, []);
+  }, [engine]);
 
   const handleExecute = useCallback(
     (cmd: string) => {
-      const engine = engineRef.current;
       const result = engine.execute(cmd);
 
-      setOutputLines((prev) => [
-        ...prev,
-        { text: `$ ${cmd}`, type: "info" as const },
-        ...result.lines,
-      ]);
+      setOutputLines((prev) => {
+        const newLines = [
+          ...prev,
+          { text: `$ ${cmd}`, type: "info" as const },
+          ...result.lines,
+        ];
+        saveSandbox(getSandboxKey(levelId), engine, newLines);
+        return newLines;
+      });
 
       refreshState();
     },
-    [refreshState]
+    [engine, refreshState, levelId]
   );
 
   const handleReset = useCallback(() => {
-    const engine = engineRef.current;
     engine.reset();
     setOutputLines([]);
     setInsertCommand("");
     refreshState();
-  }, [refreshState]);
+    localStorage.removeItem(getSandboxKey(levelId));
+  }, [engine, refreshState, levelId]);
 
   const handleInsert = useCallback((command: string) => {
     // Force re-trigger even if same command by appending invisible token
@@ -62,8 +118,8 @@ export function SandboxLayout() {
   }, []);
 
   const getCompletions = useCallback((partial: string) => {
-    return engineRef.current.getCompletions(partial);
-  }, []);
+    return engine.getCompletions(partial);
+  }, [engine]);
 
   const tabs: { id: TabId; label: string }[] = [
     { id: "terminal", label: "Терминал" },
