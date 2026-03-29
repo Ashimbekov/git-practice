@@ -7,6 +7,8 @@ import { TerminalSim } from "@/components/terminal-sim";
 import { GitVisualizer } from "@/components/git-visualizer";
 import { Quiz } from "@/components/quiz";
 import { Challenge } from "@/components/challenge";
+import { SandboxChallenge, ValidationResult } from "@/components/sandbox";
+import { EngineState } from "@/engine/git-sandbox/types";
 import {
   QuizQuestion,
   ChallengeTask,
@@ -114,9 +116,11 @@ const challengeTask: ChallengeTask = {
 
 interface LevelProps {
   onComplete: (quizCorrect: number, quizTotal: number) => void;
+  preset?: () => EngineState;
+  validator?: (state: EngineState) => ValidationResult;
 }
 
-export default function Level({ onComplete }: LevelProps) {
+export default function Level({ onComplete, preset, validator }: LevelProps) {
   const [currentStep, setCurrentStep] = useState<Step>("narrative");
   const [vizStep, setVizStep] = useState(0);
   const [quizScore, setQuizScore] = useState<{ correct: number; total: number } | null>(null);
@@ -264,7 +268,17 @@ export default function Level({ onComplete }: LevelProps) {
           >
             <NarrativeBox text="Пора попрактиковаться! Научись выбирать файлы для staging area — это навык, который ты будешь использовать ежедневно." />
 
-            <Challenge task={challengeTask} onComplete={handleChallengeComplete} />
+            {validator ? (
+              <SandboxChallenge
+                description={challengeTask.description}
+                hint={challengeTask.hint}
+                preset={preset}
+                validate={validator}
+                onComplete={handleChallengeComplete}
+              />
+            ) : (
+              <Challenge task={challengeTask} onComplete={handleChallengeComplete} />
+            )}
           </motion.div>
         )}
       </AnimatePresence>

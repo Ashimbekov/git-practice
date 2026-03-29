@@ -8,9 +8,13 @@ import { GameStorage } from "@/engine/storage";
 import { completeLevel, addQuizScore } from "@/engine/progress";
 import { checkNewBadges } from "@/engine/achievements";
 import { LevelMeta } from "@/types";
+import { EngineState } from "@/engine/git-sandbox/types";
+import { ValidationResult } from "@/components/sandbox/SandboxChallenge";
 
 type ComponentType = React.ComponentType<{
   onComplete: (quizCorrect: number, quizTotal: number) => void;
+  preset?: () => EngineState;
+  validator?: (state: EngineState) => ValidationResult;
 }>;
 
 export default function LevelPage({ params }: { params: Promise<{ id: string }> }) {
@@ -20,6 +24,8 @@ export default function LevelPage({ params }: { params: Promise<{ id: string }> 
   const [meta, setMeta] = useState<LevelMeta | null>(null);
   const [completed, setCompleted] = useState(false);
   const [newBadges, setNewBadges] = useState<string[]>([]);
+  const [preset, setPreset] = useState<(() => EngineState) | null>(null);
+  const [validator, setValidator] = useState<((state: EngineState) => ValidationResult) | null>(null);
 
   useEffect(() => {
     const entry = getLevelById(id);
@@ -36,6 +42,13 @@ export default function LevelPage({ params }: { params: Promise<{ id: string }> 
     });
 
     entry.load().then((mod) => setLevelComponent(() => mod.default));
+
+    if (entry.loadPreset) {
+      entry.loadPreset().then((mod) => setPreset(() => mod.createPreset));
+    }
+    if (entry.loadValidator) {
+      entry.loadValidator().then((mod) => setValidator(() => mod.validate));
+    }
   }, [id, router]);
 
   function handleComplete(quizCorrect: number, quizTotal: number) {
@@ -103,7 +116,11 @@ export default function LevelPage({ params }: { params: Promise<{ id: string }> 
           </span>
         </div>
       </div>
-      <LevelComponent onComplete={handleComplete} />
+      <LevelComponent
+        onComplete={handleComplete}
+        preset={preset ?? undefined}
+        validator={validator ?? undefined}
+      />
     </div>
   );
 }
