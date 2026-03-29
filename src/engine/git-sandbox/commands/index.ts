@@ -5,6 +5,7 @@ import { execBranch, execSwitch, execCheckout, execMerge } from "./branch";
 import { execReset, execRevert, execStash, execReflog, execCherryPick, execRebase } from "./advanced";
 import { execRemote, execPush, execFetch, execPull } from "./remote";
 import { execTag } from "./tag";
+import { execBlame } from "./blame";
 
 type CommandHandler = (state: EngineState, cmd: ParsedCommand) => CommandOutput;
 
@@ -30,6 +31,7 @@ const gitCommands: Record<string, CommandHandler> = {
   fetch: execFetch,
   pull: execPull,
   tag: execTag,
+  blame: execBlame,
 };
 
 const shellCommands: Record<string, CommandHandler> = {

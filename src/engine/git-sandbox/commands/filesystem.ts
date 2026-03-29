@@ -1,7 +1,8 @@
 import { EngineState, CommandOutput, ParsedCommand } from "../types";
 
 export function execEcho(state: EngineState, cmd: ParsedCommand): CommandOutput {
-  const content = cmd.args[0] ?? "";
+  const raw = cmd.args[0] ?? "";
+  const content = raw.replace(/\\n/g, "\n");
   const target = cmd.flags[">"];
 
   if (typeof target === "string") {
