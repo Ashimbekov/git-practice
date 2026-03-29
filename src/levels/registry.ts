@@ -47,7 +47,12 @@ interface LevelEntry {
 export const LEVELS: LevelEntry[] = [
   { meta: meta01 as LevelMeta, load: () => import("./01-init/Level") },
   { meta: meta02 as LevelMeta, load: () => import("./02-first-commit/Level") },
-  { meta: meta03 as LevelMeta, load: () => import("./03-staging/Level") },
+  {
+    meta: meta03 as LevelMeta,
+    load: () => import("./03-staging/Level"),
+    loadPreset: () => import("./03-staging/preset"),
+    loadValidator: () => import("./03-staging/validator"),
+  },
   { meta: meta04 as LevelMeta, load: () => import("./04-status/Level") },
   { meta: meta05 as LevelMeta, load: () => import("./05-log/Level") },
   { meta: meta06 as LevelMeta, load: () => import("./06-diff/Level") },
