@@ -18,6 +18,7 @@ export interface GraphNode {
   branchColor: string;
   branchName: string;
   isHead: boolean;
+  tags: string[];
 }
 
 export interface GraphEdge {
@@ -64,6 +65,10 @@ export function useGitGraph(state: GitGraphState): GraphLayout {
 
       nodePositions[commit.id] = { x, y };
 
+      const commitTags = (state.tags ?? [])
+        .filter((t) => t.commitId === commit.id)
+        .map((t) => t.name);
+
       return {
         id: commit.id,
         x,
@@ -73,6 +78,7 @@ export function useGitGraph(state: GitGraphState): GraphLayout {
         branchColor: branch?.color ?? "#6b7280",
         branchName: commit.branch,
         isHead: state.head === commit.branch && branch?.commitId === commit.id,
+        tags: commitTags,
       };
     });
 

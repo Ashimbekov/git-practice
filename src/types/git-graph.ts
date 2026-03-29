@@ -12,9 +12,15 @@ export interface GitBranchRef {
   color: string;
 }
 
+export interface GitTagRef {
+  name: string;
+  commitId: string;
+}
+
 export interface GitGraphState {
   commits: GitCommitNode[];
   branches: GitBranchRef[];
+  tags?: GitTagRef[];
   head: string;
 }
 

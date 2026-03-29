@@ -94,6 +94,37 @@ export function CommitNode({ node, index }: CommitNodeProps) {
           </text>
         </g>
       )}
+
+      {/* Tag badges */}
+      {node.tags.map((tag, tagIdx) => {
+        const tagWidth = tag.length * 7 + 16;
+        const yOffset = node.isHead ? 16 : -4;
+        return (
+          <g key={tag}>
+            <rect
+              x={node.x - RADIUS - tagWidth - 8}
+              y={node.y + yOffset + tagIdx * 24}
+              width={tagWidth}
+              height={20}
+              rx={10}
+              fill="#f59e0b20"
+              stroke="#f59e0b50"
+              strokeWidth={1}
+            />
+            <text
+              x={node.x - RADIUS - tagWidth / 2 - 8}
+              y={node.y + yOffset + 11 + tagIdx * 24}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill="#fbbf24"
+              fontSize={9}
+              fontWeight={600}
+            >
+              🏷 {tag}
+            </text>
+          </g>
+        );
+      })}
     </motion.g>
   );
 }
