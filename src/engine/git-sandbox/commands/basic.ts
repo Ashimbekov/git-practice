@@ -315,6 +315,11 @@ export function getBranchLabels(state: EngineState, commitId: string): string {
       }
     }
   }
+  for (const [name, cId] of state.tags) {
+    if (cId === commitId) {
+      labels.push(`tag: ${name}`);
+    }
+  }
   return labels.join(", ");
 }
 

@@ -54,9 +54,15 @@ export class GitEngine {
       colorIdx++;
     }
 
+    const tags: Array<{ name: string; commitId: string }> = [];
+    for (const [name, commitId] of this.state.tags) {
+      tags.push({ name, commitId });
+    }
+
     return {
       commits,
       branches,
+      tags,
       head: this.state.head,
     };
   }
@@ -76,7 +82,8 @@ export class GitEngine {
     // Git commands
     const gitCmds = ["git init", "git add", "git commit", "git status", "git log", "git diff",
       "git branch", "git switch", "git checkout", "git merge", "git rebase", "git cherry-pick",
-      "git reset", "git revert", "git stash", "git reflog", "git remote", "git push", "git pull", "git fetch"];
+      "git reset", "git revert", "git stash", "git reflog", "git remote", "git push", "git pull", "git fetch",
+      "git tag", "git blame", "git bisect"];
     const shellCmds = ["echo", "cat", "ls", "rm"];
     const allCmds = [...gitCmds, ...shellCmds];
 
