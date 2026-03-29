@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { NarrativeBox } from "@/components/narrative";
 import { TerminalSim } from "@/components/terminal-sim";
@@ -237,6 +238,13 @@ export default function Level({ onComplete }: LevelProps) {
               >
                 Дальше
               </button>
+              <Link
+                href="/sandbox?level=05-log"
+                target="_blank"
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm font-medium transition-colors"
+              >
+                🧪 Открыть в песочнице
+              </Link>
             </div>
           </motion.div>
         )}
