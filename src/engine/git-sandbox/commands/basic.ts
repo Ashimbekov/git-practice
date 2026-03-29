@@ -12,6 +12,8 @@ export function execInit(state: EngineState): CommandOutput {
   state.stash = [];
   state.reflog = [];
   state.conflictFiles = new Map();
+  state.tags = new Map();
+  state.bisect = null;
 
   return {
     lines: [

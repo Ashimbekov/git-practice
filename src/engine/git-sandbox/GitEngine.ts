@@ -124,5 +124,7 @@ function createEmptyState(): EngineState {
     stash: [],
     reflog: [],
     conflictFiles: new Map(),
+    tags: new Map(),
+    bisect: null,
   };
 }

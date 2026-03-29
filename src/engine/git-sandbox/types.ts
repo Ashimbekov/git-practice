@@ -38,6 +38,14 @@ export interface ReflogEntry {
   message: string;
 }
 
+export interface BisectState {
+  active: boolean;
+  goodCommits: string[];
+  badCommits: string[];
+  originalHead: string;
+  originalIsDetached: boolean;
+}
+
 export interface EngineState {
   initialized: boolean;
   workingDir: Map<string, string>;
@@ -50,6 +58,8 @@ export interface EngineState {
   stash: StashedState[];
   reflog: ReflogEntry[];
   conflictFiles: Map<string, { ours: string; theirs: string }>;
+  tags: Map<string, string>;
+  bisect: BisectState | null;
 }
 
 export interface CommandOutput {
